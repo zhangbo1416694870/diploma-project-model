@@ -1,0 +1,50 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+    
+    <bean id = "FileNameGenerator" class="com.zhangbo.common.FileNameGenerator">
+    	<property name="name" value="zhangbo"/>
+    	<property name="type" value="txt"/>
+    </bean>
+    
+  	<bean id="Person" class="com.zhangbo.common.Person">
+        <property name="name" value="lei1" />
+        <property name="address" value="address 1" />
+        <property name="age" value="28" />
+    </bean>
+    
+    <bean id = "Customer" class="com.zhangbo.common.Customer">
+    	<constructor-arg>
+    		<bean class="com.zhangbo.common.Person">
+	    		<property name="name" value="zhangbo"/>
+	    		<property name="address" value="swust"/>
+	    		<property name="age" value="23"/>
+    		</bean>
+    	</constructor-arg>
+		<property name="lists">
+			<list>
+				<value>1</value>
+				<ref bean = "Person"/>
+				<bean class="com.zhangbo.common.Person">
+					<property name="address" value="swust"/>
+					<property name="age" value="23"/>
+					<property name="name" value="zhangbo"/>
+				</bean>
+			</list>
+		</property>
+		
+		<property name="sets">
+			<set>
+				<value>1</value>
+				<ref bean = "Person"/>
+				<bean class="com.zhangbo.common.Person">
+					<property name="address" value="swust111"/>
+					<property name="age" value="23111"/>
+					<property name="name" value="zhangbo111"/>
+				</bean>
+			</set>
+		</property>
+		
+    </bean>
+</beans>
